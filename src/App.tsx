@@ -18,11 +18,14 @@ function App() {
   const [password, setPassword] = useState("");
 
   const handleSubmit = () => {
-    if (EmailValidator.isValid(email) && PasswordValidator.isValid(password)) {
-      window.alert("Email e senha validos");
+    if (
+      !EmailValidator.isValid(email) &&
+      !PasswordValidator.isValid(password)
+    ) {
+      window.alert("Email e senha inválidos");
     } else if (!EmailValidator.isValid(email)) {
       window.alert("Email inválido");
-    } else if (PasswordValidator.isValid(password)) {
+    } else if (!PasswordValidator.isValid(password)) {
       window.alert("Senha invalida");
     }
   };
