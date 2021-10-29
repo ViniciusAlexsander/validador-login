@@ -27,6 +27,8 @@ function App() {
       window.alert("Email inválido");
     } else if (!PasswordValidator.isValid(password)) {
       window.alert("Senha invalida");
+    } else {
+      window.alert("Email e senha válidos");
     }
   };
 
@@ -73,6 +75,21 @@ function App() {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
             />
+            <Typography variant="h6" gutterBottom>
+              Requisitos de senha:
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              - Uma letra maiscúla
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              - Uma letra minuscúla
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              - Um número
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              - Um caractere especial
+            </Typography>
             <Button
               type="submit"
               fullWidth
