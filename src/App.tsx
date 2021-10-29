@@ -79,10 +79,13 @@ function App() {
               Requisitos de senha:
             </Typography>
             <Typography variant="body1" gutterBottom>
-              - Uma letra maiscúla
+              - Mais que 8 caracteres
             </Typography>
             <Typography variant="body1" gutterBottom>
-              - Uma letra minuscúla
+              - Uma letra maiúscula
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              - Uma letra minúscula
             </Typography>
             <Typography variant="body1" gutterBottom>
               - Um número
