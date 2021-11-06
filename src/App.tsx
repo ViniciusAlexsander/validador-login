@@ -31,19 +31,15 @@ function App() {
     if (
       !EmailValidator.isValid(email) &&
       !PasswordValidator.isValid(password)
-    )
-      setMessageError("Email e senha inválidos");
-    else if (!EmailValidator.isValid(email))
-      setMessageError("Email inválido");
-    else if (!PasswordValidator.isValid(password))
-      setMessageError("Senha invalida");
-    else
-      setMessageError("Login feito com sucesso !!!");
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
+    ) {
+      window.alert("Email e senha inválidos");
+    } else if (!EmailValidator.isValid(email)) {
+      window.alert("Email inválido");
+    } else if (!PasswordValidator.isValid(password)) {
+      window.alert("Senha invalida");
+    } else {
+      window.alert("Email e senha válidos");
+    }
   };
 
 
@@ -99,6 +95,24 @@ function App() {
               value={password}
               onChange={(event) => setPassword(event.target.value)}
             />
+            <Typography variant="h6" gutterBottom>
+              Requisitos de senha:
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              - Mais que 8 caracteres
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              - Uma letra maiúscula
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              - Uma letra minúscula
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              - Um número
+            </Typography>
+            <Typography variant="body1" gutterBottom>
+              - Um caractere especial
+            </Typography>
             <Button
               type="submit"
               fullWidth
