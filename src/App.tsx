@@ -10,9 +10,11 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import EmailValidator from "./Validators/Email/email";
 import PasswordValidator from "./Validators/Password/password";
-import Modal from '@mui/material/Modal';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 const theme = createTheme();
+
 
 function App() {
 
@@ -20,7 +22,7 @@ function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const [messageError, setMessageError] = useState("");
 
@@ -29,32 +31,19 @@ function App() {
     if (
       !EmailValidator.isValid(email) &&
       !PasswordValidator.isValid(password)
-    ) {
+    )
       setMessageError("Email e senha inválidos");
-    } else if (!EmailValidator.isValid(email)) {
+    else if (!EmailValidator.isValid(email))
       setMessageError("Email inválido");
-    } else if (!PasswordValidator.isValid(password)) {
+    else if (!PasswordValidator.isValid(password))
       setMessageError("Senha invalida");
-    }
+    else
+      setMessageError("Login feito com sucesso !!!");
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
-  };
-
-  const style = {
-    position: 'absolute' as 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    pt: 2,
-    px: 4,
-    pb: 3,
   };
 
 
@@ -67,21 +56,11 @@ function App() {
         height: "100vh"
       }} >
         <CssBaseline />
-        <Modal
-          open={open}
-          aria-labelledby="parent-modal-title"
-          aria-describedby="parent-modal-description"
-        >
-          <Box sx={{ ...style, width: 400 }}>
-            <h2 id="parent-modal-title">Error</h2>
-            <p id="parent-modal-description">
-              {messageError}
-            </p>
-            <Button
-              onClick={handleClose} variant="outlined" color="error"
-            > Fechar </Button>
-          </Box>
-        </Modal>
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <MuiAlert onClose={handleClose} severity="info" sx={{ width: '100%' }}>
+            {messageError}
+          </MuiAlert>
+        </Snackbar>
         <Box
           sx={{
             display: "flex",
