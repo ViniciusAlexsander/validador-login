@@ -10,12 +10,22 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import EmailValidator from "./Validators/Email/email";
 import PasswordValidator from "./Validators/Password/password";
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 const theme = createTheme();
 
+
 function App() {
+
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const [open, setOpen] = useState(false);
+
+  const [messageError, setMessageError] = useState("");
+
 
   const handleSubmit = () => {
     if (
@@ -32,13 +42,23 @@ function App() {
     }
   };
 
+
+
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" sx={{
+        display: "flex",
+        alignItems: "center",
+        height: "100vh"
+      }} >
         <CssBaseline />
+        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+          <MuiAlert onClose={handleClose} severity="info" sx={{ width: '100%' }}>
+            {messageError}
+          </MuiAlert>
+        </Snackbar>
         <Box
           sx={{
-            marginTop: 8,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
